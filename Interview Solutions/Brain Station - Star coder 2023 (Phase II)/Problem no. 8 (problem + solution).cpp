@@ -68,7 +68,7 @@ pair<int, int> sol (int i, int used_time) {
 int main () { 
   int tt;
   cin >> tt;
-  for (int cs = 1; cs <= tt; ++cs) { 
+  while (tt--) { 
     cin >> n;
     for (int i = 0; i < n; ++i) { 
       cin >> a[i].x >> a[i].d >> a[i].p;
@@ -80,8 +80,9 @@ int main () {
       return A.d < B.d;
     });
     auto ans = sol(0, 0);
-    cout << "Case #" << cs << ":\n" << ans.first << "\n" << ans.second << '\n';
+    cout << ans.first << "\n" << ans.second << '\n';
   }
   return 0;
 }
+
 
