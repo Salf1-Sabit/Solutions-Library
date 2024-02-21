@@ -21,7 +21,7 @@ int main () {
   int tt;
   cin >> tt;
   while (tt--) {
-  	// Take input
+    // Take input
     char ign;
     string dayName;
     int day, month, year;
@@ -30,7 +30,7 @@ int main () {
     // Check leap year
     daysCount[2] = (isLeapYear(year) ? 29 : 28);
 		
-		// Get the dayName ID from dayNames vector
+    // Get the dayName ID from dayNames vector
     int curDayNo = day, dayNameId = -1;
     for (int d = 0; d < 7; ++d) {
       if (dayNames[d] == dayName) {
@@ -39,7 +39,7 @@ int main () {
       }
     }
 		
-		// Figure out the dayNameId for Date "1" of that month
+    // Figure out the dayNameId for Date "1" of that month
     while (curDayNo > 1) {
       --curDayNo, --dayNameId;
       if (dayNameId == -1) {
@@ -47,13 +47,13 @@ int main () {
       }
     }
 		
-		// Initialize the answer grid with "-" dashes
+    // Initialize the answer grid with "-" dashes
     vector<vector<string>> grid(5, vector<string>(7, "-"));
     
     // Starting colomn number (colNo) and starting date (val)
     int colNo = dayNo[dayNames[dayNameId]] - 1, val = 1;
 		
-		// Start filling out the answer grid with corresponding date
+    // Start filling out the answer grid with corresponding date
     for (int rowNo = 0; rowNo < 5; ++rowNo) { // Run for each row
       while (true) {
       
@@ -76,7 +76,7 @@ int main () {
       }
     }
 		
-		// Now, reset the column the the 0th column
+    // Now, reset the column the the 0th column
     colNo = 0;
     
     /* If there're anymore dates left to fill 
@@ -85,7 +85,7 @@ int main () {
       grid[0][colNo++] = to_string(val++);
     }
 		
-		// Start printing the outputs
+    // Start printing the outputs
     cout << "|---------------------------|\n";
     cout << "|Sun|Mon|Tue|Wed|Thu|Fri|Sat|\n";
     cout << "|---------------------------|\n";
