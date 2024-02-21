@@ -2,10 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int daysCount[] = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-vector<string> dayNames = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-map<string, int> dayNo = {{"Sun", 1}, {"Mon", 2}, {"Tue", 3}, {"Wed", 4}, {"Thu", 5}, {"Fri", 6}, {"Sat", 7}};
+// Days count of each month from (1 to 12)
+int daysCount[] = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 
 
+// Names of each weekdays from (0 to 6)
+vector<string> dayNames = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}; 
+
+// Just mapping the indexes of each weekday name (1 based indexing)
+map<string, int> dayNo = {{"Sun", 1}, {"Mon", 2}, {"Tue", 3}, {"Wed", 4}, {"Thu", 5}, {"Fri", 6}, {"Sat", 7}}; 
+
+// Leap year check function
 bool isLeapYear (int year) {
   if (year % 400 == 0) {
     return true;
@@ -27,7 +33,7 @@ int main () {
     int day, month, year;
     cin >> day >> ign >> month >> ign >> year >> dayName;
 
-    // Check leap year
+    // Change february days count if this is a leap year
     daysCount[2] = (isLeapYear(year) ? 29 : 28);
 		
     // Get the dayName ID from dayNames vector
@@ -98,12 +104,15 @@ int main () {
           cout << "|";
         }
         
-        if (grid[r][c] == "-") {  
-          cout << " " << grid[r][c] << " |"; // put one space to the left and to right (in case of dash)
+        if (grid[r][c] == "-") { 
+          // put one space to the left and to right (in case of dash)		
+          cout << " " << grid[r][c] << " |"; 
         } else if (stoi(grid[r][c]) > 9) {
-          cout << " " << grid[r][c] << "|"; // put one space to the left only (in case of double digits)
+	  // put one space to the left only (in case of double digits)
+          cout << " " << grid[r][c] << "|"; 
         } else {
-          cout << "  " << grid[r][c] << "|"; // put two spaces to the left only (in case of single digit)
+	  // put two spaces to the left only (in case of single digit)
+          cout << "  " << grid[r][c] << "|"; 
         }
       }
       cout << "\n|---------------------------|\n";
